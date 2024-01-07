@@ -16,14 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Navigate to the project directory
+        working-directory: D:\a\azure-try1\azure-try1\YourProjectDirectory
+        run: |
+          dir  # List contents of the current directory for verification
+
       - name: Setup MSBuild path
         uses: microsoft/setup-msbuild@v1.0.2
 
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v1.0.5
-
-      - name: Navigate to the project directory
-        run: cd D:\a\azure-try1\azure-try1
 
       - name: Restore NuGet packages
         run: nuget restore
@@ -34,8 +36,9 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-            name: ASP-app
-            path: '/published/**'
+          name: ASP-app
+          path: '/published/**'
+
 
 
   deploy:
