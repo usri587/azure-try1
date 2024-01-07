@@ -19,14 +19,15 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Check npm path
-        run: which npm
+      - name: Install dependencies
+        run: npm install
 
-      - name: Install  dependencies
-        run: npm install 
+      - name: Clean workspace
+        run: git clean -ffdx && git reset --hard
 
-      - name: Build React app
+      - name: Start React app
         run: npm start
+
 
       - name: Archive build artifacts
         uses: actions/upload-artifact@v2
