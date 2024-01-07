@@ -19,8 +19,11 @@ jobs:
         with:
           node-version: '14'
 
+      - name: Check npm path
+        run: which npm
+
       - name: Install dependencies
-        run: npm install 
+        run: npm install -g
 
       - name: Build React app
         run: npm run build
@@ -50,4 +53,3 @@ jobs:
           slot-name: 'production'
           package: ${{ github.workspace }}/build
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-
