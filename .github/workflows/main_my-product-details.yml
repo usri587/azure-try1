@@ -34,8 +34,9 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: ASP-app
-          path: '/published/**''
+            name: ASP-app
+            path: '/published/**'
+
 
   deploy:
     runs-on: windows-latest
